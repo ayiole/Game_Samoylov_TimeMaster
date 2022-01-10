@@ -11,7 +11,7 @@
     height: 100%;
 }
 
-body{
+body {
     transition: filter .5s;
 }
 
@@ -32,7 +32,7 @@ body{
     background-color: wheat;
     position: absolute;
     top: 50px;
-    right: 175px;
+    right: 250px;
     z-index: 100;
     cursor: pointer;
     border: 4px wheat solid;
@@ -54,7 +54,7 @@ body{
     display: none;
     position: absolute;
     top: 50px;
-    right: 100px;
+    right: 175px;
     width: 50px;
     height: 50px;
     z-index: 100;
@@ -63,6 +63,34 @@ body{
 
 .results:hover {
     transform: scale(1.4);
+}
+
+.logout {
+    display: none;
+    z-index: 100;
+    position: absolute;
+    cursor: pointer;
+    top: 50px;
+    right: 100px;
+    height: 54px;
+    width: 54px;
+    background-color: #ff8548;
+    border-radius: 50%;
+    transition: all .5s;
+}
+
+.logout:hover{
+    transform: scale(1.2);
+}
+
+.logout__img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    border-radius: 50px;
+    float: left;
 }
 
 .auth {

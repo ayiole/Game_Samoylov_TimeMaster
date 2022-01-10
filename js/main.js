@@ -9,6 +9,8 @@ let authbtn = document.querySelector('.auth__btn')
 
 let themebtn = document.querySelector('.theme-btn')
 
+let logoutbtn = document.querySelector('.logout')
+
 StartPageCheck()
 
 //кнопка авторизации
@@ -41,6 +43,7 @@ if (!localStorage.getItem('theme')) {
 }
 
 themebtn.addEventListener('click', ChangeTheme)
+logoutbtn.addEventListener('click', LogOut)
 
 //смена темы
 function ChangeTheme() {
@@ -55,6 +58,7 @@ function StartPageCheck() {
         sectionMenu.style.display = 'block'
         results.style.display = 'block'
         themebtn.style.display = 'block'
+        logoutbtn.style.display = 'block'
     }
     else {
         sectionAuth.style.display = 'block'
@@ -73,7 +77,24 @@ function Authorization() {
             sectionAuth.style.display = 'none',
                 sectionMenu.style.display = 'block',
                 results.style.display = 'block',
-                themebtn.style.display = 'block'
+                themebtn.style.display = 'block',
+                logoutbtn.style.display = 'block'
         }, 800)
     }
+}
+
+//функция логаута
+function LogOut() {
+    localStorage.clear()
+    sectionMenu.style.display = 'none'
+    results.style.display = 'none'
+    themebtn.style.display = 'none'
+    logoutbtn.style.display = 'none'
+    document.querySelector('body').classList.remove('body-theme')
+    document.querySelector('.auth__top').classList.remove('auth__top--dop')
+    document.querySelector('.auth__bottom').classList.remove('auth__bottom--dop')
+    document.querySelector('.auth__center').style.opacity = ''
+    document.querySelector('.auth__container').style.backgroundColor = '#4e4e4e'
+    sectionAuth.style.display = 'block'
+    authinput.value = ''
 }
