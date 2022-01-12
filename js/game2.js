@@ -15,16 +15,6 @@ startbtn.classList.add('start__btn')
 startbtn.classList.add('start__btn--level2')
 startbtn.innerHTML = 'Start'
 
-let gametext = document.createElement('p')
-gametext.classList.add('gametext')
-
-let gamebtn = document.createElement('button')
-let gamebtnspan = document.createElement('span')
-gamebtn.classList.add('gamebtn')
-gamebtn.classList.add('gamebtn--level2')
-gamebtnspan.classList.add('gamebtnspan')
-gamebtnspan.classList.add('gamebtnspan--level2')
-
 let scoretext = document.createElement('p')
 scoretext.classList.add('scoretext')
 scoretext.classList.add('scoretext--2')
@@ -101,13 +91,6 @@ function PrepareToStart() {
     game2.append(startbtn)
 }
 
-gamebtn.addEventListener('focus', BtnBlur)
-
-//для анимации кнопки игры
-function BtnBlur() {
-    setTimeout(() => gamebtn.blur(), 750)
-}
-
 startbtn.addEventListener('click', StartGame)
 
 function StartGame() {
@@ -142,7 +125,7 @@ function StartGame() {
     timerdiv.append(timersecond)
     timerdiv.append(':')
     timerdiv.append(timermillisecond)
-    cron = setInterval(() => { timer(); }, 10)
+    cron = setInterval(() => { timer() }, 10)
 
     CreatePicture()
 }
@@ -252,9 +235,10 @@ function CreatePicture() {
                     clearInterval(cron)
                     second = difsecond
                     millisecond = 1000;
-                    cron = setInterval(() => { timer(); }, 10)
+                    cron = setInterval(() => { timer() }, 10)
                     CreatePicture()
                 } else if (droppableBelowfalse) {
+                    clearInterval(cron)
                     img.onmouseup()
                     img.remove()
                     EndGame()
@@ -277,9 +261,6 @@ function EndGame() {
     game2.style.flexDirection = 'column'
     game2.style.display = 'flex'
     game2.style.justifyContent = 'center'
-
-    gametext.style.display = 'none'
-    gamebtn.style.display = 'none'
 
     timerdiv.style.display = 'none'
 
@@ -324,7 +305,6 @@ function timer() {
         clearInterval(cron)
         document.querySelector('.timer-seconds').innerText = '00';
         document.querySelector('.timer-milliseconds').innerText = '00';
-        document.querySelector('img').remove()
         EndGame()
     }
 
