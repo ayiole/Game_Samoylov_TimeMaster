@@ -13,7 +13,7 @@ startbtn.innerHTML = 'Start'
 
 let preparetext = document.createElement('p')
 preparetext.classList.add('preparetext')
-preparetext.innerHTML = 'Будьте готовы! Нажимайте на кнопку рочно через заданное количество секунд!'
+preparetext.innerHTML = 'Будьте готовы! Нажимайте на кнопку ровно через заданное количество секунд!'
 
 let gametext = document.createElement('p')
 gametext.classList.add('gametext')
