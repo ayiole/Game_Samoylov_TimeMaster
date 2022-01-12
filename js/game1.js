@@ -11,6 +11,10 @@ startbtn.classList.add('start__btn')
 startbtn.classList.add('start__btn--level1')
 startbtn.innerHTML = 'Start'
 
+let preparetext = document.createElement('p')
+preparetext.classList.add('preparetext')
+preparetext.innerHTML = 'Будьте готовы! Нажимайте на кнопку рочно через заданное количество секунд!'
+
 let gametext = document.createElement('p')
 gametext.classList.add('gametext')
 
@@ -73,6 +77,7 @@ function PrepareToStart() {
     diff_ul.style.display = 'none'
 
     game1.append(starttitle)
+    game1.append(preparetext)
     game1.append(startbtn)
 }
 
@@ -88,6 +93,7 @@ startbtn.addEventListener('click', StartGame)
 //старт игры
 function StartGame() {
     starttitle.style.display = 'none'
+    preparetext.style.display = 'none'
     startbtn.style.display = 'none'
 
     if (!JSON.parse(localStorage.getItem('score'))) {
@@ -105,7 +111,7 @@ function StartGame() {
 
     randnum = getRandomNumber()
 
-    gametext.innerHTML = `Нажмите на кнопку ровно через ${randnum}c`
+    gametext.innerHTML = `${randnum}c`
     game1.append(gametext)
 
     gamebtnspan.innerHTML = 'Нажми меня!'
@@ -139,7 +145,7 @@ function CheckTime() {
 
         randnum = getRandomNumber()
 
-        gametext.innerHTML = `Нажмите на кнопку ровно через ${randnum}c`
+        gametext.innerHTML = `${randnum}c`
         time = checktime
 
         timing = setTimeout(EndGame, randnum * 1000 + rounding)
@@ -148,6 +154,9 @@ function CheckTime() {
 
 //конец игры
 function EndGame() {
+    game1.style.display = 'flex'
+    game1.style.flexDirection = 'column'
+
     gametext.style.display = 'none'
     gamebtn.style.display = 'none'
     let endgametext = document.createElement('p')
@@ -155,6 +164,13 @@ function EndGame() {
     endgametext.innerHTML = `Конец игры! Количество набранных очков: ${arrscore[arrscore.length - 1].score}`
     endgametext.classList.add('endgametext')
     game1.append(endgametext)
+
+    let backtodiff = document.createElement('a')
+    backtodiff.classList.add('backtodiff')
+    backtodiff.classList.add('backtodiff--level1')
+    backtodiff.innerHTML = 'Вернуться к выбору сложности'
+    backtodiff.href = '1.html'
+    game1.append(backtodiff)
 
     let backtomenu = document.createElement('a')
     backtomenu.classList.add('backtomenu')

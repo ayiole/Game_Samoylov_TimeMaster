@@ -6,6 +6,10 @@ let starttitle = document.createElement('h1')
 starttitle.classList.add('title')
 starttitle.innerHTML = 'Нажмите Start чтобы начать игру'
 
+let preparetext = document.createElement('p')
+preparetext.classList.add('preparetext')
+preparetext.innerHTML = 'Будьте готовы! Засеките время между миганиями лампочек!'
+
 let startbtn = document.createElement('button')
 startbtn.classList.add('start__btn')
 startbtn.classList.add('start__btn--level3')
@@ -113,6 +117,7 @@ function PrepareToStart() {
     diff_ul.style.display = 'none'
 
     game3.append(starttitle)
+    game3.append(preparetext)
     game3.append(startbtn)
 }
 
@@ -121,6 +126,7 @@ startbtn.addEventListener('click', StartGame)
 //старт игры
 function StartGame() {
     starttitle.style.display = 'none'
+    preparetext.style.display = 'none'
     startbtn.style.display = 'none'
 
     game3.style.display = 'grid'
@@ -175,6 +181,9 @@ function LampFlashing(lamp) {
 
 //конец игры
 function EndGame() {
+    game3.style.display = 'flex'
+    game3.style.flexDirection = 'column'
+    
     lampinner.style.display = 'none'
     lamp__label.style.display = 'none'
 
@@ -183,6 +192,13 @@ function EndGame() {
     endgametext.innerHTML = `Конец игры! Количество набранных очков: ${arrscore[arrscore.length - 1].score}`
     endgametext.classList.add('endgametext')
     game3.append(endgametext)
+
+    let backtodiff = document.createElement('a')
+    backtodiff.classList.add('backtodiff')
+    backtodiff.classList.add('backtodiff--level3')
+    backtodiff.innerHTML = 'Вернуться к выбору сложности'
+    backtodiff.href = '3.html'
+    game3.append(backtodiff)
 
     let backtomenu = document.createElement('a')
     backtomenu.classList.add('backtomenu')
